@@ -1,0 +1,58 @@
+1.use ini format for configuration
+2.modularized the components
+     --main logic
+     --switch strategy logic
+     --utils
+     --fuzzer-related
+     --SE engine-related
+
+
+overall structure:
+
+--sefuzzer.py 
+      func get_config
+      afl = afl()
+      klee = klee()
+      switcher = switcher() 
+
+      func start_work
+      #driver code
+      sefuzzer_main:
+        initialze_project(PJ_PATH)
+        sefuzzer.start_work()
+        
+      func get_config
+      map tdidf_map
+      map rare_map
+      func run_afl
+
+--SE-engine/klee.py:
+      func get_config
+      func run_klee
+      func build_klee_exec_cmd
+      func exec_klee_cmds
+      func exec_one_klee
+
+
+--switcher.py:
+      func get_config
+      klee_jobs
+
+--utils.py:
+      func compile_target
+      func call_converter
+      func process_csvfiles
+
+
+
+
+Sefuzzer calls (synchronizely) poke_oracle every configured_epoch,
+
+Oracle by itself, collects required data (stats) periodically, and update decision flags
+
+when getting poked, Oracle returns Start_SE, Terminate_SE decisions.
+
+
+
+we should define a standard name for the generated binary and bitcode
+  e.g,  afl-bin  klee-bc

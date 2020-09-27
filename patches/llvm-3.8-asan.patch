@@ -1,0 +1,30 @@
+--- llvm-3.8/lib/Transforms/Instrumentation/AddressSanitizer.cpp	2015-12-05 06:42:34.000000000 -0800
++++ llvm-3.8/lib/Transforms/Instrumentation/AddressSanitizer.cpp.new	2020-09-14 23:18:24.172250161 -0700
+@@ -1659,9 +1659,16 @@
+   for (auto Inst : ToInstrument) {
+     if (ClDebugMin < 0 || ClDebugMax < 0 ||
+         (NumInstrumented >= ClDebugMin && NumInstrumented <= ClDebugMax)) {
+-      if (isInterestingMemoryAccess(Inst, &IsWrite, &TypeSize, &Alignment))
++      if (isInterestingMemoryAccess(Inst, &IsWrite, &TypeSize, &Alignment)) {
+         instrumentMop(ObjSizeVis, Inst, UseCalls,
+                       F.getParent()->getDataLayout());
++        // muse mark asan instrumentations
++        Inst->setMetadata("afl_edge_sanitizer",
++                         llvm::MDNode::get(*C, None));
++
++
++
++      }
+       else
+         instrumentMemIntrinsic(cast<MemIntrinsic>(Inst));
+     }
+@@ -1680,6 +1687,9 @@
+ 
+   for (auto Inst : PointerComparisonsOrSubtracts) {
+     instrumentPointerComparisonOrSubtraction(Inst);
++    // muse mark asan instrumentations
++    Inst->setMetadata("afl_edge_sanitizer",
++                      llvm::MDNode::get(*C, None));
+     NumInstrumented++;
+   }
+ 

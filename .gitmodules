@@ -1,0 +1,9 @@
+[submodule "AFL"]
+	path = AFL
+	url = git@github.com:google/AFL.git
+[submodule "qsym"]
+	path = qsym
+	url = git@github.com:sslab-gatech/qsym.git
+[submodule "svf-muse"]
+	path = svf-muse
+	url = git@github.com:evanmak/svf-muse.git

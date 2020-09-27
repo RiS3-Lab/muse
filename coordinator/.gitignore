@@ -1,0 +1,10 @@
+*.o
+*.so
+*.bc
+*.pyc
+*.lo
+klee-out*
+*.a
+*.so.1
+*.Plo
+*.Po

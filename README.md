@@ -1,4 +1,4 @@
-# MUSE Fuzzer 
+# MEUZZ Fuzzer 
 
 ## Clone the repo
 

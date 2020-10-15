@@ -66,11 +66,18 @@ $ docker run --cap-add=SYS_PTRACE --priviledged -it muse:latest /bin/bash
 ## Citation
 If your research find one or several components of savior useful, please cite the following paper:
 ```
-@article{chen2020meuzz,
-  title={MEUZZ: Smart Seed Scheduling for Hybrid Fuzzing},
-  author={Chen, Yaohui and Ahmadi, Mansour and Wang, Boyu and Lu, Long and others},
-  journal={arXiv preprint arXiv:2002.08568},
-  year={2020}
+@inproceedings{meuzz,
+  author    = {Chen, Yaohui and
+              Ahmadi, Mansour and
+              Mirzazade farkhani, Reza and
+              Wang, Boyu and
+              Lu, Long},
+  title     = {{MEUZZ}: Smart Seed Scheduling for Hybrid Fuzzing},
+  booktitle = {Proceedings of the 23rd International Symposium on Research in Attacks, Intrusions and
+               Defenses},
+  series = {RAID'20},
+  year      = {2020},
+  month={October}
 }
 ```
 

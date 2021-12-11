@@ -29,7 +29,9 @@ RUN           apt-get update && apt-get install -y \
 
 
 
-RUN           pip install --upgrade pip
+#RUN           pip install --upgrade pip
+RUN           wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+RUN           python get-pip.py
 RUN           pip install psutil
 RUN           pip install wllvm
 RUN           pip install virtualenv
